@@ -10,10 +10,6 @@ Each client connection is represented by a separate socket, and the server maint
 
 The server provides console output to provide information about its status, including the acceptance of new connections, reading and writing data from and to sockets, and closure of client connections. Error handling mechanisms are in place to handle any failures and ensure smooth operation.
 
-To use the event-driven chat server, compile the source code, run the compiled executable with the desired port number as a command-line parameter, and connect to the server using a suitable chat client application. Messages exchanged between clients will be forwarded by the server to all connected clients, creating a real-time chat experience.
-
-# Event-Driven Chat Server
-
 ## Background
 
 In this exercise, you will implement an event-driven chat server. The function of the chat server is to forward each incoming message to all client connections (i.e., to all clients) except for the client connection over which the message was received. The challenge in such a server lies in implementing this behavior in an entirely event-driven manner without the use of threads.
@@ -35,6 +31,9 @@ To run the event-driven chat server, follow these steps:
 3. The server will start listening for incoming connections on the specified port.
 4. Clients can connect to the server using a suitable chat client application.
 5. The server will forward each incoming message to all connected clients, except for the client that sent the message.
+
+To use the event-driven chat server, compile the source code, run the compiled executable with the desired port number as a command-line parameter, and connect to the server using a suitable chat client application. Messages exchanged between clients will be forwarded by the server to all connected clients, creating a real-time chat experience. 
+
 
 Output messages will be printed to the console, providing information about the server's status, connections, and message handling.
 
