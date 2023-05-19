@@ -32,7 +32,6 @@ To run the event-driven chat server, follow these steps:
 4. Clients can connect to the server using a suitable chat client application.
 5. The server will forward each incoming message to all connected clients, except for the client that sent the message.
 
-To use the event-driven chat server, compile the source code, run the compiled executable with the desired port number as a command-line parameter, and connect to the server using a suitable chat client application. Messages exchanged between clients will be forwarded by the server to all connected clients, creating a real-time chat experience. 
 
 
 Output messages will be printed to the console, providing information about the server's status, connections, and message handling.
