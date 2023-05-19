@@ -12,15 +12,15 @@ The server provides console output to provide information about its status, incl
 
 ## Background
 
-In this exercise, you will implement an event-driven chat server. The function of the chat server is to forward each incoming message to all client connections (i.e., to all clients) except for the client connection over which the message was received. The challenge in such a server lies in implementing this behavior in an entirely event-driven manner without the use of threads.
+The event-driven chat server is designed to facilitate real-time communication between multiple clients. Its main function is to forward incoming messages to all connected clients, excluding the sender. The server achieves this behavior through an event-driven approach, eliminating the need for threads.
 
-In this exercise, you will use the `select` function to check which socket descriptor is ready for reading or writing. You should call `select` inside a loop, but it should appear only once in your exercise.
+The server utilizes the select function to determine which socket descriptors are ready for reading or writing. This function is called within a loop, but it appears only once in the server implementation.
 
-When checking the read set, you should distinguish the main socket, which gets new connections, from the other sockets that negotiate data with the clients. When the main socket is ready for reading, you should call `accept`. When any other socket is ready for reading, you should call `read` or `recv`.
+When checking the read set, the server distinguishes the main socket, responsible for accepting new connections, from other sockets that handle data negotiation with clients. If the main socket is ready for reading, the server calls the accept function. For other sockets, it uses the read or recv functions to process incoming data.
 
-You will maintain a queue for each connection, which will hold all the messages that must be written on that connection.
+To manage outgoing messages, the server maintains a message queue for each client connection. Messages in the queue are written to the corresponding socket descriptor when it is ready for writing. To ensure non-blocking behavior, the server sets the socket to be non-blocking using the ioctl function.
 
-When checking the write set, note that if a socket descriptor is ready for writing, you can write once to the socket without the risk of being blocked. Since you would like to write all messages in the queue to the socket descriptor, you will set the socket to be non-blocking. To make a socket with the socket descriptor `fd` to be non-blocking, you can use the `ioctl` function.
+These mechanisms enable efficient event-driven processing, allowing the chat server to handle incoming messages and manage client connections effectively.
 
 ## Usage
 
